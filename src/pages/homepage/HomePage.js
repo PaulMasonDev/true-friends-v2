@@ -4,6 +4,7 @@ import './Homepage.scss';
 //THIS WILL EVENTUALLY BECOME AN AXIOS CALL TO A MONGODB DATABASE
 import TESTDATA from '../../TESTDATA';
 
+import Header from '../../components/Header/Header';
 import AddName from '../../components/AddName/AddName';
 import ListNames from '../../components/ListNames/ListNames';
 import InfoDisplay from '../../components/InfoDisplay/InfoDisplay';
@@ -18,13 +19,16 @@ const HomePage = () => {
 
   const handleName = (val) => {
     setSearchName(val);
+    setUserData(TESTDATA.userData)//Not needed.
   }
+
 
   const handleNameClick = (name) => {
     const setupDisplayData = userData.friends.filter(friend => {
       if(friend.name === name) {
         return friend;
       }
+      return null;
     });
     // console.log(setupDisplayData[0].occasions[0].items[0]);
     setDisplayData(setupDisplayData[0] || "Name Goes Here");
@@ -37,53 +41,54 @@ const HomePage = () => {
       if(friend.name === name){
         return friend
       }
+      return null;
     });
     
     const foundOccasion = foundFriend[0].occasions.filter(testOccasion => {
       if(testOccasion.occasion === occasion){
         return occasion;
       }
+      return null;
     });
     console.log(foundOccasion[0])
     setDisplayOccasion(foundOccasion[0]);
-    
-    
   }
 
-
-
   return (
-    <div className="homepage">
-      <div className="homepage__names">
-        <AddName 
-          handleName={handleName} 
-          searchName={searchName}
-        />
-        <ListNames 
-          handleClick={handleNameClick} 
-          userData={userData} 
-          searchName={searchName}
-        />
-      </div>
-      <div className="homepage__info">
-        <InfoDisplay 
-          displayData={displayData}
-          handleClick={handleOccasionClick}  
-        />
-        <div className="homepage__info__occasionInfo">
-        <OccasionDisplay 
-          displayOccasion={displayOccasion}
-        />
+    <div>
+      <Header />
+      <div className="homepage">
+        <div className="homepage__names">
+          <AddName 
+            handleName={handleName} 
+            searchName={searchName}
+          />
+          <ListNames 
+            handleClick={handleNameClick} 
+            userData={userData} 
+            searchName={searchName}
+          />
         </div>
-        <div className="homepage__info__occasion">
-          <div className="homepage__info__occasion__item">
-
+        <div className="homepage__info">
+          <InfoDisplay 
+            displayData={displayData}
+            handleClick={handleOccasionClick}  
+          />
+          <div className="homepage__info__occasionInfo">
+          <OccasionDisplay 
+            displayOccasion={displayOccasion}
+          />
           </div>
-          <div className="homepage__info__occasion__addButton">
+          <div className="homepage__info__occasion">
+            <div className="homepage__info__occasion__item">
 
-          </div>
-          <div className="homepage__info__occasion__itemList">
+            </div>
+            <div className="homepage__info__occasion__addButton">
 
+            </div>
+            <div className="homepage__info__occasion__itemList">
+
+            </div>
           </div>
         </div>
       </div>
