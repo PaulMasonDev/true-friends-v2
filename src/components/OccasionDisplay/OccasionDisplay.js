@@ -9,7 +9,7 @@ const OccasionDisplay = ({displayData, displayOccasion, handleClick}) => {
   return (
     <div className="homepage__info__occasionInfo">
       <h2>{displayOccasion.occasion}</h2>
-      <p>{displayOccasion.date}</p>
+      <h3>{displayOccasion.date}</h3>
         <ul>
         {
           displayOccasion.items ? displayOccasion.items.map(item => {

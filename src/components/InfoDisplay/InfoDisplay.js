@@ -8,7 +8,7 @@ const InfoDisplay = ({displayData: {name, occasions}, handleClick}) => {
   }
   return (
     <div className="homepage__info__display">
-      <h2>{name || "NAME PLACEHOLDER"}</h2>
+      <h2>{name}</h2>
         <ul>
           {occasions ? occasions.map(occasion => {
             return <li 
@@ -17,7 +17,7 @@ const InfoDisplay = ({displayData: {name, occasions}, handleClick}) => {
               data-occasion={occasion.occasion}
               >
                 {occasion.occasion}</li>
-            }) : "OCCASIONS PLACEHOLDER"
+            }) : ""
           }
         </ul>
           

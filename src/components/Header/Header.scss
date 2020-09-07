@@ -5,6 +5,7 @@
   background-color: #333;
   color: white;
   font-weight: 300;
+  margin-bottom: 20px;
 
   ul {
     display: flex;
@@ -12,5 +13,9 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+
+    li {
+      font-size: 3rem;
+    }
   }
 }
