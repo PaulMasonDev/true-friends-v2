@@ -1,16 +1,23 @@
 import React from 'react'
 
 import './OccasionDisplay.scss';
-const OccasionDisplay = ({displayOccasion}) => {
+const OccasionDisplay = ({displayData, displayOccasion, handleClick}) => {
+  const handleItemClick = (e) => {
+    const item = e.target.getAttribute('data-item');
+    handleClick(displayData.name, displayOccasion, item);
+  }
   return (
     <div className="homepage__info__occasionInfo">
-      <p>{displayOccasion.occasion}</p>
+      <h2>{displayOccasion.occasion}</h2>
       <p>{displayOccasion.date}</p>
+        <ul>
         {
           displayOccasion.items ? displayOccasion.items.map(item => {
-            return <p>{item}</p>;
+            return <li onClick={handleItemClick} data-item={item}>{item}</li>;
           }) : ''
         }
+        </ul>
+        
     </div>
   );
 }

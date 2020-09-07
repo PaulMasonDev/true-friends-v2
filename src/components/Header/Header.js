@@ -1,9 +1,16 @@
 import React from 'react'
 
-const Header = () => {
+import './Header.scss'
+
+const Header = ({username}) => {
   return (
-    <div>
-      <h1>HEADER</h1>
+    <div className="header">
+      <h1>TRUE FRIENDS</h1>
+      <ul>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Sign-up/Login</li>
+      </ul>
     </div>
   );
 }

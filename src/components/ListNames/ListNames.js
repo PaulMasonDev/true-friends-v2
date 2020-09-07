@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './ListNames.scss';
+
 const ListNames = (props) => {
   const filteredFriends = props.userData.friends.filter(friend => 
     friend.name.toLowerCase().includes(props.searchName.toLowerCase())
@@ -12,17 +14,20 @@ const ListNames = (props) => {
 
   return (
     <div className="homepage__names__list">
-      {filteredFriends.map(friend => {
-      return (
-      <p 
-        key={friend.id}
-        data-name={friend.name} 
-        onClick={handleClick}
-        >
-        {friend.name}
-      </p>
-      );
-    })}
+      <ul>
+        {filteredFriends.map(friend => {
+          return (
+          <li 
+            key={friend.id}
+            data-name={friend.name} 
+            onClick={handleClick}
+            >
+            {friend.name}
+          </li>
+          );
+        })}
+      </ul>
+      
     </div>
   );
 }
