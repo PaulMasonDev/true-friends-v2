@@ -38,13 +38,6 @@ const HomePage = () => {
     return foundFriend.occasions.find(testOccasion => testOccasion.occasion === occasion);
   }
 
-  const findItem = (name, occasion, item) => {
-    const foundFriend = userData.friends.find(friend => friend.name === name);
-    const foundOccasion = foundFriend.occasions.find(testOccasion => testOccasion.occasion === occasion);
-    return foundOccasion.items.find(testItem => testItem === item);
-  }
-
-  
   // HANDLE LOGIC FOR DISPLAYING NAME DETAILS WHEN CLICKING ON SPECIFIC NAME
   const handleNameClick = (name) => {
     const setupDisplayData = findFriend(name);
