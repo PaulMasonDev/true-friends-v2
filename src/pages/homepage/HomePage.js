@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 // THIS WILL EVENTUALLY BECOME AN AXIOS CALL WITH USEEFFECT TO A MONGODB DATABASE
 import TESTDATA from '../../TESTDATA';
 
@@ -19,6 +19,7 @@ const HomePage = () => {
   const [displayData, setDisplayData] = useState(TESTDATA.displayData);
   const [displayOccasion, setDisplayOccasion] = useState('');
   const [displayItem, setDisplayItem] = useState('');
+  
 
   const [searchName, setSearchName] = useState('');
 
@@ -62,6 +63,15 @@ const HomePage = () => {
     setDisplayItem(foundItem);
   }
 
+  const handleUserClick = () => {
+    const user = {
+      username: 'PPPPP'
+    }
+    axios.post('http://localhost:5000/users/add', user)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
   return (
     <div>
       <Header />
@@ -90,6 +100,7 @@ const HomePage = () => {
           <ItemDisplay 
             displayItem={displayItem}
           />
+          <button onClick={handleUserClick}>CLICK ME TO ADD USER</button>
         </div>
       </div>
     </div>

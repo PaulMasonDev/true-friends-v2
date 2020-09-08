@@ -3,6 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+app.use(express.json());
+
+const User = require('./models/User.model');
+
 require('dotenv').config();
 
 app.use(cors());
@@ -12,7 +16,8 @@ const databaseUri = process.env.DATABASEURI;
 
 mongoose.connect(databaseUri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 })
   .then(console.log('Connected to MongoDB Database'))
   .catch(err => console.log(err));
@@ -20,6 +25,9 @@ mongoose.connect(databaseUri, {
 app.get('/', (req, res) => {
   res.send('WORKING');
 });
+
+const userRoute = require('./routes/users.routes');
+app.use('/users', userRoute);
 
 app.listen(port, (req, res) => {
   console.log(`Server running on port ${port}`);
