@@ -4,13 +4,11 @@ const router = express.Router();
 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
-  
-  console.log('HITTING ROUTE', username);
 
   User.create({username: username})
     .then(res => console.log('USER ADDED'))
     .catch(err => console.log(err));
-
+  
   res.end();
 });
 
