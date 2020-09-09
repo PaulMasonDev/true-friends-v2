@@ -4,7 +4,6 @@ import axios from 'axios';
 import TESTDATA from '../../TESTDATA';
 
 // COMPONENT IMPORTS
-import Header from '../../components/Header/Header';
 import AddName from '../../components/AddName/AddName';
 import ListNames from '../../components/ListNames/ListNames';
 import InfoDisplay from '../../components/InfoDisplay/InfoDisplay';
@@ -74,7 +73,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Header />
       <div className="homepage">
         <div className="homepage__names">
           <AddName 
